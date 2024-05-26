@@ -1,0 +1,17 @@
+{
+  "name": "keyboard9",
+  "version": "0.0.1",
+  "main": "./build/keyboard.js",
+  "module": "./build/keyboard.js",
+  "browser": "./build/keyboard.js",
+  "scripts": {
+    "build": "tsc --project .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "peaberberian",
+  "license": "MIT",
+  "description": "Virtual keyboard on a 3x3 grid designed for fast typing speed",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

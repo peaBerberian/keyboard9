@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Minimal Keyboard-9 Example Page</title>
+  </head>
+  <body>
+    <div>
+      <b>Last written text:</b>
+      <span id="result">None (Choose "Done" once your text is entered)</span>
+    </div>
+    <br />
+    <script type="module">
+      // NOTE: this example used the locally-build visual keyboard.
+      // Ensure you've built one locally before launching this example.
+      import createKeyboard from "../build/keyboard.js";
+
+      createKeyboard(document.body, {
+        // Display the Visual Keyboard's default `<input>` element
+        useDefaultInput: true,
+        // Triggered once the text has been validated
+        onDone: (text) => {
+          document.getElementById("result").innerText = '"' + text + '"';
+        },
+      });
+    </script>
+  </body>
+</html>

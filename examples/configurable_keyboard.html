@@ -1,0 +1,356 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Simple Keyboard-9 Example Page</title>
+    <style>
+      .content {
+        max-width: 1500px;
+        margin: auto;
+      }
+      .page-title {
+        font-family: system-ui;
+        text-align: center;
+        border-bottom: 1px dotted black;
+        margin: 50px 85px;
+      }
+      .kb-opt-wrapper {
+        float: right;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+      }
+      .kb-opt {
+        min-height: 40px;
+        padding: 4px 0px;
+        border-top: 1px dotted #555;
+        display: flex;
+        align-items: center;
+      }
+      .kb-opt-title {
+        width: 185px;
+        display: inline-block;
+      }
+
+      .kb-wrapper {
+        display: inline-block;
+        margin: 10px;
+      }
+      .kb-and-opt {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+      #keyboard {
+        margin-bottom: 15px;
+      }
+      .result-wrapper {
+        margin: 5px;
+        font-style: italic;
+        font-size: 0.95em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1 class="page-title">Keyboard-9 Demo</h1>
+      <div class="kb-and-opt">
+        <div class="kb-wrapper">
+          <div id="keyboard"></div>
+          <div class="result-wrapper">
+            <b>Last written text:</b>
+            <span id="result"
+              >None (Choose "Done" once your text is entered)</span
+            >
+          </div>
+        </div>
+
+        <div class="kb-opt-wrapper">
+          <h2 class="kb-opt-wrapper-title">Options</h2>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Key map</b></span>
+            <span class="kb-opt-value"
+              ><select id="key-map" name="key-map">
+                <option value="numpad">numpad</option>
+                <option value="direction">direction</option>
+                <option value="qwerty">qwerty</option>
+              </select></span
+            >
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Block background color</b></span>
+            <span class="kb-opt-value"
+              ><input type="color" id="block-bg" name="block-bg"
+            /></span>
+          </div>
+
+          <!-- TODO add checkbox for transparency -->
+          <!-- <div> -->
+          <!--   <span class="kb-opt-title"><b>Keyboard background color</b></span> -->
+          <!--   <span class ="kb-opt-value" -->
+          <!--     ><input type="color" id="kb-bg" name="kb-bg" -->
+          <!--   /></span> -->
+          <!-- </div> -->
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Block text color</b></span>
+            <span class="kb-opt-value"
+              ><input type="color" id="block-fg" name="block-fg"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Block border color</b></span>
+            <span class="kb-opt-value"
+              ><input
+                type="color"
+                id="block-border-color"
+                name="block-border-color"
+                value="#000000"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Block size</b></span>
+            <span class="kb-opt-value"
+              ><input type="number" id="block-size" name="block-size"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Block padding</b></span>
+            <span class="kb-opt-value"
+              ><input type="number" id="block-padding" name="block-padding"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Block margin</b></span>
+            <span class="kb-opt-value"
+              ><input type="number" id="block-margin" name="block-margin"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"
+              ><b>Block margin between letters</b></span
+            >
+            <span class="kb-opt-value"
+              ><input
+                type="number"
+                id="block-inner-margin"
+                name="block-inner-margin"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Block border size</b></span>
+            <span class="kb-opt-value"
+              ><input
+                type="number"
+                id="block-border-size"
+                name="block-border-size"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Block border-radius</b></span>
+            <span class="kb-opt-value"
+              ><input type="number" id="block-radius" name="block-radius"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Block font size</b></span>
+            <span class="kb-opt-value"
+              ><input type="text" id="font-size" name="font-size"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Block font family</b></span>
+            <span class="kb-opt-value"
+              ><input type="text" id="font-family" name="font-family"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Enable hints</b></span>
+            <span class="kb-opt-value"
+              ><input type="checkbox" id="enable-hints" name="enable-hints"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Hint text color</b></span>
+            <span class="kb-opt-value"
+              ><input type="color" id="hint-fg" name="hint-fg"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Hint background color</b></span>
+            <span class="kb-opt-value"
+              ><input
+                type="color"
+                id="hint-background-color"
+                name="hint-background-color"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"><b>Hint font size</b></span>
+            <span class="kb-opt-value"
+              ><input type="text" id="hint-font-size" name="font-size"
+            /></span>
+          </div>
+
+          <div class="kb-opt">
+            <span class="kb-opt-title"
+              ><b>Touch mode (how to react on click)</b></span
+            >
+            <span class="kb-opt-value"
+              ><select id="touch-mode" name="touch-mode">
+                <option value="block">block</option>
+                <option value="character">character</option>
+                <option value="disabled">disabled</option>
+              </select></span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      // NOTE: this example used the locally-build keyboard-9.
+      // Ensure you've built one locally before launching this example.
+      import createKeyboard, { defaultStyle } from "../build/keyboard.js";
+
+      let destroyKeyboard = null;
+
+      const blockBgElt = document.getElementById("block-bg");
+      blockBgElt.value = defaultStyle.blockBackgroundColor;
+
+      // const kbBgElt = document.getElementById("kb-bg");
+
+      const blockFgElt = document.getElementById("block-fg");
+      blockFgElt.value = defaultStyle.blockTextColor;
+
+      const blockBorderColorElt = document.getElementById("block-border-color");
+      blockBorderColorElt.value = defaultStyle.blockBorderColor;
+
+      const blockSizeElt = document.getElementById("block-size");
+      blockSizeElt.value = defaultStyle.blockSize;
+
+      const blockPaddingElt = document.getElementById("block-padding");
+      blockPaddingElt.value = defaultStyle.blockPadding;
+
+      const blockMarginElt = document.getElementById("block-margin");
+      blockMarginElt.value = defaultStyle.blockMargin;
+
+      const blockInnerMarginElt = document.getElementById("block-inner-margin");
+      blockInnerMarginElt.value = defaultStyle.innerLettersMargin;
+
+      const blockBorderSizeElt = document.getElementById("block-border-size");
+      blockBorderSizeElt.value = defaultStyle.blockBorderSize;
+
+      const blockBorderRadiusElt = document.getElementById("block-radius");
+      blockBorderRadiusElt.value = defaultStyle.blockBorderRadius;
+
+      const enableHintsElt = document.getElementById("enable-hints");
+      enableHintsElt.checked = true;
+
+      const hintsTextColor = document.getElementById("hint-fg");
+      hintsTextColor.value = defaultStyle.hintTextColor;
+
+      const hintsBackgroundColor = document.getElementById(
+        "hint-background-color",
+      );
+      hintsBackgroundColor.value = defaultStyle.hintBackgroundColor;
+
+      const hintsFontSizeElt = document.getElementById("hint-font-size");
+      hintsFontSizeElt.value = defaultStyle.hintFontSize;
+
+      // TODO validate that one
+      const blockFontSize = document.getElementById("font-size");
+      blockFontSize.value = defaultStyle.fontSize;
+
+      const blockFontFamilyElt = document.getElementById("font-family");
+      blockFontFamilyElt.value = defaultStyle.fontFamily;
+
+      const keyMapSelectElt = document.getElementById("key-map");
+      keyMapSelectElt.value = "numpad";
+
+      const touchModeSelectElt = document.getElementById("touch-mode");
+      touchModeSelectElt.value = "block";
+
+      let lastText;
+      function resetKeyboard() {
+        hintsBackgroundColor.disabled = !enableHintsElt.checked;
+        hintsTextColor.disabled = !enableHintsElt.checked;
+        if (destroyKeyboard !== null) {
+          destroyKeyboard();
+        }
+        destroyKeyboard = createKeyboard(document.getElementById("keyboard"), {
+          // Display Keyboard-9's default `<input>` element
+          useDefaultInput: true,
+          onUpdate: (text) => {
+            lastText = text;
+          },
+          // Triggered once the text has been validated
+          onDone: (text) => {
+            document.getElementById("result").innerText = '"' + text + '"';
+          },
+          keyMap: keyMapSelectElt.value,
+          touchMode: touchModeSelectElt.value,
+          initialText: lastText,
+          enableHints: !!enableHintsElt.checked,
+          style: {
+            blockBackgroundColor: blockBgElt.value,
+            // keyboardBackgroundColor: kbBgElt.value,
+            blockTextColor: blockFgElt.value,
+            blockBorderColor: blockBorderColorElt.value,
+            fontSize: blockFontSize.value,
+            fontFamily: blockFontFamilyElt.value,
+            blockSize: +blockSizeElt.value,
+            blockBorderSize: +blockBorderSizeElt.value,
+            blockBorderRadius: +blockBorderRadiusElt.value,
+            blockPadding: +blockPaddingElt.value,
+            blockMargin: +blockMarginElt.value,
+            innerLettersMargin: +blockInnerMarginElt.value,
+            hintFontSize: hintsFontSizeElt.value,
+            hintBackgroundColor: hintsBackgroundColor.value,
+            hintTextColor: hintsTextColor.value,
+          },
+        });
+      }
+
+      [
+        blockBgElt,
+        // kbBgElt,
+        blockFgElt,
+        blockBorderColorElt,
+        blockSizeElt,
+        blockPaddingElt,
+        blockMarginElt,
+        blockInnerMarginElt,
+        blockBorderSizeElt,
+        blockBorderRadiusElt,
+        enableHintsElt,
+        hintsTextColor,
+        hintsBackgroundColor,
+        blockFontSize,
+        blockFontFamilyElt,
+        hintsFontSizeElt,
+        keyMapSelectElt,
+        touchModeSelectElt,
+      ].forEach((elt) => {
+        elt.onchange = resetKeyboard;
+        elt.oninput = resetKeyboard;
+      });
+
+      resetKeyboard();
+    </script>
+  </body>
+</html>

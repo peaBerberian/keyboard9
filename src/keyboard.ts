@@ -239,6 +239,7 @@ export default function createKeyboard(
     updateCallbacks.push(updateInputEltStatus);
     parentElement.appendChild(inputElt);
 
+    updateInputEltStatus();
     function updateInputEltStatus() {
       if (cursorInterval !== null) {
         clearInterval(cursorInterval);

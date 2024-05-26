@@ -544,7 +544,7 @@ export default function createKeyboard(
 
     keyboardElt.className = "keyboard-grid";
     keyboardElt.style.display = "grid";
-    keyboardElt.style.gridTemplateColumns = "repeat(3, 1fr)";
+    keyboardElt.style.gridTemplateColumns = "repeat(3, 0fr)";
     keyboardElt.style.fontFamily = fontFamily;
     keyboardElt.style.width = keyboardSize + "px";
     keyboardElt.style.fontSize = fontSize;
@@ -597,7 +597,7 @@ export default function createKeyboard(
     }
     keyboardElt.className = "letters-grid";
     keyboardElt.style.display = "grid";
-    keyboardElt.style.gridTemplateColumns = "repeat(3, 1fr)";
+    keyboardElt.style.gridTemplateColumns = "repeat(3, 0fr)";
     keyboardElt.style.fontFamily = fontFamily;
     keyboardElt.style.width = keyboardSize + "px";
     keyboardElt.style.fontSize = fontSize;

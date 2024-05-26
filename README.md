@@ -16,9 +16,7 @@ multiple available keys such as game consoles (where you have a controller),
 television set (where you have a remote control) and set-top boxes (where you
 usually also have a remote control).
 
-This project was first intended as a proof-of-concept for efficient text inputs
-on devices without keyboard, for debugging purposes.
-
+This project was first intended as a proof-of-concept for debugging purposes.
 However, it is now completely functional and feature-complete so I decided to
 open-source and publish it under the name `keyboard9`.
 

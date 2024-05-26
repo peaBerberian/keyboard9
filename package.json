@@ -1,6 +1,6 @@
 {
   "name": "keyboard9",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "./build/keyboard.js",
   "module": "./build/keyboard.js",
   "browser": "./build/keyboard.js",
